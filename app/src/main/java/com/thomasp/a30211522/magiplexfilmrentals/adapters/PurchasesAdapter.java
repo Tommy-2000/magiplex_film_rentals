@@ -18,7 +18,7 @@ import com.thomasp.a30211522.magiplexfilmrentals.model.MyPurchases_Data;
 
 import java.util.List;
 
-public class PurchasesAdapter extends RecyclerView.Adapter<PurchasesAdapter.FavFilmViewHolder> {
+public class PurchasesAdapter extends RecyclerView.Adapter<PurchasesAdapter.PurchasedFilmViewHolder> {
 
     private Context fContext;
     private List<MyPurchases_Data> myPurchases_data;
@@ -31,18 +31,18 @@ public class PurchasesAdapter extends RecyclerView.Adapter<PurchasesAdapter.FavF
 
     @NonNull
     @Override
-    public FavFilmViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public PurchasedFilmViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.film_cardview, viewGroup, false);
-        return new FavFilmViewHolder(view);
+        return new PurchasedFilmViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FavFilmViewHolder favFilmViewHolder, int i) {
+    public void onBindViewHolder(@NonNull PurchasedFilmViewHolder purchasedFilmViewHolder, int i) {
         MyPurchases_Data fl = myPurchases_data.get(i);
-        Glide.with(fContext).load(fl.getFilmCertificate()).into(favFilmViewHolder.FilmThumbnail);
-        favFilmViewHolder.FilmTitle.setText(fl.getFilmTitle());
-        favFilmViewHolder.FilmGenre.setText(fl.getFilmGenre());
-        Glide.with(fContext).load(fl.getFilmCertificate()).into(favFilmViewHolder.FilmCertificate);
+        Glide.with(fContext).load(fl.getFilmCertificate()).into(purchasedFilmViewHolder.FilmThumbnail);
+        purchasedFilmViewHolder.FilmTitle.setText(fl.getFilmTitle());
+        purchasedFilmViewHolder.FilmGenre.setText(fl.getFilmGenre());
+        Glide.with(fContext).load(fl.getFilmCertificate()).into(purchasedFilmViewHolder.FilmCertificate);
     }
 
     @Override
@@ -50,13 +50,13 @@ public class PurchasesAdapter extends RecyclerView.Adapter<PurchasesAdapter.FavF
         return myPurchases_data.size();
     }
 
-    private class FavFilmViewHolder extends RecyclerView.ViewHolder {
+    class PurchasedFilmViewHolder extends RecyclerView.ViewHolder {
         ImageView FilmThumbnail;
         TextView FilmTitle;
         TextView FilmGenre;
         ImageView FilmCertificate;
 
-        private FavFilmViewHolder(@NonNull View itemView) {
+        PurchasedFilmViewHolder(@NonNull View itemView) {
             super(itemView);
             FilmThumbnail = itemView.findViewById(R.id.film_thumbnail_id);
             FilmTitle = itemView.findViewById(R.id.film_title_id);

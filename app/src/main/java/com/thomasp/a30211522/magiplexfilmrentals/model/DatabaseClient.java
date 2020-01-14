@@ -7,7 +7,7 @@ import android.content.Context;
 public class DatabaseClient {
 
     private Context DBContext;
-    private DatabaseClient DBInstance;
+    private static DatabaseClient DBInstance;
 
     //
     private MagiPlexFilm_DB magiPlexFilmDb;

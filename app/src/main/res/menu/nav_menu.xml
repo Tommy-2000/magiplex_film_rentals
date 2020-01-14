@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.thomasp.a30211522.magiplexfilmrentals.activities.MasterActivity">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_latest_films"
+            android:checkable="true"
+            android:icon="@drawable/ic_new_releases_24dp"
+            android:title="@string/latest_films"
+            android:visible="true"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/nav_all_films"
+            android:checkable="true"
+            android:icon="@drawable/ic_movies_24dp"
+            android:title="@string/all_films"
+            android:visible="true"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/nav_my_favourites"
+            android:checkable="true"
+            android:icon="@drawable/ic_favorite_movies_24dp"
+            android:title="@string/my_favourites"
+            android:visible="true"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/nav_my_purchases"
+            android:checkable="true"
+            android:icon="@drawable/ic_movie_rental_cart_24dp"
+            android:title="@string/my_purchases"
+            android:visible="true"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/nav_settings"
+            android:checkable="true"
+            android:icon="@drawable/ic_settings_box_24dp"
+            android:title="@string/my_settings"
+            android:visible="true"
+            app:showAsAction="never" />
+    </group>
+
+</menu>

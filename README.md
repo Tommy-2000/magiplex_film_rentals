@@ -12,9 +12,7 @@ Consists of three activities and four fragments.
 
 * Settings Activity - a system default settings page for the application.
 
-**UPDATE 1** I'm currently dealing with an issue of displaying the first fragment 'LatestFilmsFragment'
-
-**UPDATE 2** I'm currently working out what elements of the application can be modified by this settings activity. Please let me know of any suggestions you would like to make.
+**UPDATE 1** I'm currently dealing with an issue converting a JSON string into a Bitmap image within the ViewHolder for the RecyclerView. Any contributions to this project would be much appreciated. (MasterFilmAdapter - **Line 139-150**)
 
 
 # Fragments

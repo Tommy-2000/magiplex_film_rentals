@@ -26,11 +26,11 @@ public class MyFavouritesFragment extends Fragment {
 
     private List<MyFavourites_Data> MyFavouritesDataList;
     private FavouriteAdapter favouriteAdapter;
-
-
     public static MagiPlexFilm_DB magiPlexFilmCreateDB;
     private RecyclerView recyclerView;
     private GridLayoutManager layoutManager;
+
+
     private static final int VERTICAL_ITEM_SPACE = 48;
 
 
@@ -102,7 +102,6 @@ public class MyFavouritesFragment extends Fragment {
         //Use this recyclerView adapter to render the data to these items and set the items into a grid
         FavouriteAdapter favouriteAdapter = new FavouriteAdapter(myFavourites_data, fContext);
         recyclerView.setLayoutManager(new LinearLayoutManager(fContext));
-        recyclerView.setLayoutManager(layoutManager);
 
 
         recyclerView.setAdapter(favouriteAdapter);

@@ -87,11 +87,6 @@ public class MyPurchasesFragment extends Fragment {
         //Set the recyclerView for the rootView and apply spacing
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.purchased_film_feed);
 
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        //add ItemDecoration
-        recyclerView.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
-
 
         //Return the rootView and the getter for MyFavourites_Data
         getPurchaseData();
@@ -105,6 +100,10 @@ public class MyPurchasesFragment extends Fragment {
         PurchasesAdapter purchasesAdapter = new PurchasesAdapter(myPurchases_data, fContext);
         recyclerView.setLayoutManager(new LinearLayoutManager(fContext));
         recyclerView.setLayoutManager(layoutManager);
+
+        recyclerView.setHasFixedSize(true);
+        //add ItemDecoration
+        recyclerView.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
 
 
         recyclerView.setAdapter(purchasesAdapter);

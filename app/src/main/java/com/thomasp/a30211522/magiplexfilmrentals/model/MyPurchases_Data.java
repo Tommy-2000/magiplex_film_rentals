@@ -58,7 +58,7 @@ public class MyPurchases_Data implements Serializable {
     }
 
 
-    String getFilmDescription() {
+    public String getFilmDescription() {
         return FilmDescription;
     }
 
@@ -67,7 +67,7 @@ public class MyPurchases_Data implements Serializable {
     }
 
 
-    String getFilmUserRating() {
+    public String getFilmUserRating() {
         return FilmUserRating;
     }
 
@@ -85,7 +85,7 @@ public class MyPurchases_Data implements Serializable {
     }
 
 
-    String getFilmThumbnailURL() {
+    public String getFilmThumbnailURL() {
         return FilmThumbnailURL;
     }
 

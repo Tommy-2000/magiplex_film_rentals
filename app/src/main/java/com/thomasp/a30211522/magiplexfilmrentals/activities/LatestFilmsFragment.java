@@ -13,12 +13,12 @@ import android.view.ViewGroup;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
@@ -31,6 +31,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,12 +44,16 @@ public class LatestFilmsFragment extends Fragment {
     private RequestQueue requestQueue;
     private List<MasterFilm_Data> FilmDataList = new ArrayList<>();
     private MasterFilmAdapter masterFilmAdapter;
+    private RecyclerView recyclerView;
+    private GridLayoutManager layoutManager;
+
+
     public static MagiPlexFilm_DB magiPlexFilm_db;
 
     private static final int VERTICAL_ITEM_SPACE = 48;
 
-    private Context fContext;
     private View rootView;
+    private Context fContext;
 
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -82,7 +87,6 @@ public class LatestFilmsFragment extends Fragment {
             LFparam2 = getArguments().getString(ARG_PARAM2);
         }
 
-
     }
 
 
@@ -95,65 +99,69 @@ public class LatestFilmsFragment extends Fragment {
 
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.latest_film_feed);
 
-        masterFilmAdapter = new MasterFilmAdapter(getActivity(), FilmDataList);
-
-        recyclerView.setAdapter(masterFilmAdapter);
-
-        recyclerView.setHasFixedSize(true);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        //add ItemDecoration
-        recyclerView.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
-
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-
-
         progressDialog = new ProgressDialog(getActivity());
         //Show progress dialog before making http request
         progressDialog.setMessage("Retrieving...");
         progressDialog.show();
 
 
-        JsonArrayRequest filmJSONRequest = new JsonArrayRequest(JSON_URL, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                Log.d(TAG, response.toString());
-                hidePDialog();
+        JsonArrayRequest filmJSONRequest = new JsonArrayRequest(JSON_URL, response -> {
+            Log.d(TAG, response.toString());
+            hidePDialog();
 
-                for (int i = 0; i < response.length(); i++) {
+            for (int i = 0; i < response.length(); i++) {
 
-                    try {
-                        JSONObject object = response.getJSONObject(i);
-                        MasterFilm_Data film_data = new MasterFilm_Data();
-                        film_data.setFilmId(object.getInt("imdb_id"));
-                        film_data.setTitle(object.getString("original_title"));
-                        film_data.setGenre(object.getString("genres"));
-                        film_data.setDescription(object.getString("overview"));
-                        film_data.setUserRating(object.getString("vote_average"));
-                        film_data.setCertificate(object.getString("certification"));
-                        film_data.setThumbnailURL(object.getString("poster_path"));
+                try {
+                    JSONObject object = response.getJSONObject(i);
+                    MasterFilm_Data film_data = new MasterFilm_Data();
+                    film_data.setFilmId(object.getInt("imdb_id"));
+                    film_data.setTitle(object.getString("original_title"));
+                    film_data.setGenre(object.getString("genres"));
+                    film_data.setDescription(object.getString("overview"));
+                    film_data.setUserRating(object.getString("vote_average"));
+                    film_data.setCertificate(object.getString("certification"));
+                    film_data.setThumbnailURL(object.getString("poster_path"));
 
-                        FilmDataList.add(film_data);
+                    FilmDataList.add(film_data);
 
 
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
 
-                masterFilmAdapter.notifyDataSetChanged();
             }
 
+            SetupRecyclerView(FilmDataList);
+
+            masterFilmAdapter.notifyDataSetChanged();
         }, error -> {
             VolleyLog.d(TAG, "Error: " + error.getMessage());
             hidePDialog();
         });
 
         requestQueue = Volley.newRequestQueue(fContext);
+        requestQueue.add(filmJSONRequest);
 
         return rootView;
+
+    }
+
+
+    private void SetupRecyclerView(List<MasterFilm_Data> FilmDataList) {
+
+        MasterFilmAdapter masterFilmAdapter = new MasterFilmAdapter(fContext, FilmDataList);
+
+        recyclerView.setAdapter(masterFilmAdapter);
+
+        recyclerView.setHasFixedSize(true);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(fContext));
+        recyclerView.setLayoutManager(layoutManager);
+
+        //add ItemDecoration
+        recyclerView.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
+
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
 
     }
 

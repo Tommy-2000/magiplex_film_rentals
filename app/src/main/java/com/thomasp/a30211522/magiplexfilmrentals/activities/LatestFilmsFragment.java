@@ -158,9 +158,6 @@ public class LatestFilmsFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(fContext));
         recyclerView.setLayoutManager(layoutManager);
 
-        //add ItemDecoration
-        recyclerView.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
-
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
     }
@@ -186,23 +183,7 @@ public class LatestFilmsFragment extends Fragment {
     }
 
 
-    public class VerticalSpaceItemDecoration extends RecyclerView.ItemDecoration {
 
-        private final int verticalSpaceHeight;
-
-        public VerticalSpaceItemDecoration(int verticalSpaceHeight) {
-            this.verticalSpaceHeight = verticalSpaceHeight;
-        }
-
-        @Override
-        public void getItemOffsets(Rect outRect, View view, RecyclerView parent,
-                                   RecyclerView.State state) {
-            outRect.bottom = verticalSpaceHeight;
-        }
-    }
-
-
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -232,7 +213,6 @@ public class LatestFilmsFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
 

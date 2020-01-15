@@ -33,8 +33,6 @@ public class MyFavouritesFragment extends Fragment {
     private GridLayoutManager layoutManager;
 
 
-    private static final int VERTICAL_ITEM_SPACE = 48;
-
 
     private Context fContext;
     private View rootView;
@@ -54,7 +52,6 @@ public class MyFavouritesFragment extends Fragment {
     }
 
 
-    // TODO: Rename and change types and number of parameters
     public static MyFavouritesFragment newInstance(String MFparam1, String MFparam2) {
         MyFavouritesFragment fragment = new MyFavouritesFragment();
         Bundle args = new Bundle();
@@ -100,8 +97,6 @@ public class MyFavouritesFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(fContext));
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-        //add ItemDecoration
-        recyclerView.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
 
         recyclerView.setAdapter(favouriteAdapter);
 
@@ -115,23 +110,6 @@ public class MyFavouritesFragment extends Fragment {
     }
 
 
-    public class VerticalSpaceItemDecoration extends RecyclerView.ItemDecoration {
-
-        private final int verticalSpaceHeight;
-
-        public VerticalSpaceItemDecoration(int verticalSpaceHeight) {
-            this.verticalSpaceHeight = verticalSpaceHeight;
-        }
-
-        @Override
-        public void getItemOffsets(Rect outRect, View view, RecyclerView parent,
-                                   RecyclerView.State state) {
-            outRect.bottom = verticalSpaceHeight;
-        }
-    }
-
-
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -152,7 +130,6 @@ public class MyFavouritesFragment extends Fragment {
 
 
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
 

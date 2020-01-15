@@ -6,6 +6,9 @@ import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,6 +74,7 @@ public class MasterFilmAdapter extends RecyclerView.Adapter<MasterFilmAdapter.Fi
                 intent.putExtra("film_genre", filmDataList.get(filmViewHolder.getAdapterPosition()).getGenre());
                 intent.putExtra("film_userrating", filmDataList.get(filmViewHolder.getAdapterPosition()).getUserRating());
                 intent.putExtra("img_film_certificate", filmDataList.get(filmViewHolder.getAdapterPosition()).getCertificate());
+                intent.putExtra("img_film_thumbnail", filmDataList.get(filmViewHolder.getAdapterPosition()).getThumbnailURL());
 
                 fContext.startActivity(intent);
             }
@@ -93,10 +97,6 @@ public class MasterFilmAdapter extends RecyclerView.Adapter<MasterFilmAdapter.Fi
         filmViewHolder.tv_film_userrating.setText(filmDataList.get(position).getUserRating());
         filmViewHolder.tv_film_genre.setText(filmDataList.get(position).getGenre());
 
-        //Load image from the internet and set it as a string linked to an ImageView class using Glide
-        String posterThumbnail = "https://image.tmdb.org/t/p/w500" + filmDataList.get(position).getThumbnailURL();
-        Glide.with(fContext).load(posterThumbnail).placeholder(R.drawable.loading_frame).into(filmViewHolder.img_film_thumbnail);
-        Glide.with(fContext).load(filmDataList.get(position).getCertificate()).apply(option).into(filmViewHolder.img_film_certificate);
 
 
         if (LatestFilmsFragment.magiPlexFilm_db.myFavouritesDao().isFavourite(masterFilm_data.getFilmId()) == 1)
@@ -134,6 +134,19 @@ public class MasterFilmAdapter extends RecyclerView.Adapter<MasterFilmAdapter.Fi
 
             }
         });
+    }
+
+    //TODO - Look into this string to bitmap function - do I need Glide for this? Should I put this function in the fragment or the adapter?
+    public Bitmap StringToBitMap() {
+
+        byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
+        //Load image from the internet and set it as a string linked to an ImageView class using Glide
+        String posterThumbnail = "https://image.tmdb.org/t/p/w500" + filmDataList.get(position).getThumbnailURL();
+        Glide.with(fContext).load(posterThumbnail).placeholder(R.drawable.loading_frame).into(filmViewHolder.img_film_thumbnail);
+        Glide.with(fContext).load(filmDataList.get(position).getCertificate()).apply(option).into(filmViewHolder.img_film_certificate);
+
+        Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+        return bitmap;
     }
 
     //Return the number of items from the MasterFilm_Data model

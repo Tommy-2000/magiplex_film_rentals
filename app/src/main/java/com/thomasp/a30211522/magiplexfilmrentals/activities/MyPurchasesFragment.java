@@ -33,9 +33,6 @@ public class MyPurchasesFragment extends Fragment {
     private GridLayoutManager layoutManager;
 
 
-    private static final int VERTICAL_ITEM_SPACE = 48;
-
-
     private Context fContext;
     private View rootView;
 
@@ -54,7 +51,6 @@ public class MyPurchasesFragment extends Fragment {
     }
 
 
-    // TODO: Rename and change types and number of parameters
     public static MyPurchasesFragment newInstance(String MPparam1, String MPparam2) {
         MyPurchasesFragment fragment = new MyPurchasesFragment();
         Bundle args = new Bundle();
@@ -102,8 +98,6 @@ public class MyPurchasesFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
         recyclerView.setHasFixedSize(true);
-        //add ItemDecoration
-        recyclerView.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
 
 
         recyclerView.setAdapter(purchasesAdapter);
@@ -118,23 +112,7 @@ public class MyPurchasesFragment extends Fragment {
     }
 
 
-    public class VerticalSpaceItemDecoration extends RecyclerView.ItemDecoration {
 
-        private final int verticalSpaceHeight;
-
-        public VerticalSpaceItemDecoration(int verticalSpaceHeight) {
-            this.verticalSpaceHeight = verticalSpaceHeight;
-        }
-
-        @Override
-        public void getItemOffsets(Rect outRect, View view, RecyclerView parent,
-                                   RecyclerView.State state) {
-            outRect.bottom = verticalSpaceHeight;
-        }
-    }
-
-
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -155,7 +133,6 @@ public class MyPurchasesFragment extends Fragment {
 
 
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
 

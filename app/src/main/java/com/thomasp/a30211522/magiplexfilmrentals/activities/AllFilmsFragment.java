@@ -52,9 +52,6 @@ public class AllFilmsFragment extends Fragment {
 
     public static MagiPlexFilm_DB magiPlexFilm_db;
 
-
-    private static final int VERTICAL_ITEM_SPACE = 48;
-
     private View rootView;
     private Context fContext;
 
@@ -163,8 +160,6 @@ public class AllFilmsFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(fContext));
         recyclerView.setLayoutManager(layoutManager);
 
-        //add ItemDecoration
-        recyclerView.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
 
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
@@ -191,23 +186,8 @@ public class AllFilmsFragment extends Fragment {
     }
 
 
-    public class VerticalSpaceItemDecoration extends RecyclerView.ItemDecoration {
-
-        private final int verticalSpaceHeight;
-
-        public VerticalSpaceItemDecoration(int verticalSpaceHeight) {
-            this.verticalSpaceHeight = verticalSpaceHeight;
-        }
-
-        @Override
-        public void getItemOffsets(Rect outRect, View view, RecyclerView parent,
-                                   RecyclerView.State state) {
-            outRect.bottom = verticalSpaceHeight;
-        }
-    }
 
 
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -228,7 +208,6 @@ public class AllFilmsFragment extends Fragment {
 
 
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
 

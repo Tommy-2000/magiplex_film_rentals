@@ -28,11 +28,11 @@ public class MyPurchasesFragment extends Fragment {
 
     private List<MyPurchases_Data> MyPurchasesDataList;
     private PurchasesAdapter purchasesAdapter;
-
-
-    public static MagiPlexFilm_DB magiPlexFilmCreateDB;
+    public static MagiPlexFilm_DB magiPlexFilm_db;
     private RecyclerView recyclerView;
     private GridLayoutManager layoutManager;
+
+
     private static final int VERTICAL_ITEM_SPACE = 48;
 
 

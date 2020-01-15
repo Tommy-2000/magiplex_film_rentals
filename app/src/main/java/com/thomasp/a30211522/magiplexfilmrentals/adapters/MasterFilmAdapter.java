@@ -57,12 +57,12 @@ public class MasterFilmAdapter extends RecyclerView.Adapter<MasterFilmAdapter.Fi
     public FilmViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         //Set an inflater for the ViewHolder with the film_cardview layout
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.film_cardview, parent, false);
+        View view = LayoutInflater.from(fContext).inflate(R.layout.film_cardview, parent, false);
         final FilmViewHolder filmViewHolder = new FilmViewHolder(view);
 
 
         //This viewholder contains a context that sends an intent to navigate to the FilmDetailsActivity.class
-        filmViewHolder.film_context.setOnClickListener(new View.OnClickListener() {
+        filmViewHolder.film_card_container.setOnClickListener(new View.OnClickListener() {
             @java.lang.Override
             public void onClick(View view) {
                 Intent intent = new Intent(fContext, FilmDetailsActivity.class);
@@ -71,12 +71,14 @@ public class MasterFilmAdapter extends RecyclerView.Adapter<MasterFilmAdapter.Fi
                 intent.putExtra("film_genre", filmDataList.get(filmViewHolder.getAdapterPosition()).getGenre());
                 intent.putExtra("film_userrating", filmDataList.get(filmViewHolder.getAdapterPosition()).getUserRating());
                 intent.putExtra("img_film_certificate", filmDataList.get(filmViewHolder.getAdapterPosition()).getCertificate());
+
+                fContext.startActivity(intent);
             }
         });
 
 
         //Return the ViewHolder
-        return new FilmViewHolder(view);
+        return filmViewHolder;
     }
 
 
@@ -152,7 +154,7 @@ public class MasterFilmAdapter extends RecyclerView.Adapter<MasterFilmAdapter.Fi
         ImageView img_film_thumbnail;
         ImageView img_film_certificate;
         ImageView iconFavourite;
-        LinearLayout ll_film_container;
+        LinearLayout film_card_container;
         RelativeLayout film_context;
 
 
@@ -165,7 +167,7 @@ public class MasterFilmAdapter extends RecyclerView.Adapter<MasterFilmAdapter.Fi
             tv_film_userrating = itemView.findViewById(R.id.film_user_rating_id);
             img_film_thumbnail = itemView.findViewById(R.id.film_thumbnail_id);
             img_film_certificate = itemView.findViewById(R.id.film_certificate_id);
-            ll_film_container = itemView.findViewById(R.id.film_container);
+            film_card_container = itemView.findViewById(R.id.film_card_container);
             film_context = itemView.findViewById(R.id.filmContext);
             iconFavourite = itemView.findViewById(R.id.iconFavourite);
 

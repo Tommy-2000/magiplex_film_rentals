@@ -1,4 +1,4 @@
-#Tue Jan 14 12:47:31 GMT 2020
+#Wed Jan 15 11:23:22 GMT 2020
 base.0=C\:\\Users\\Wendy\\Documents\\AppDev\\magiplex_film_rentals\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes.dex
 path.1=classes.dex
 renamed.1=classes2.dex

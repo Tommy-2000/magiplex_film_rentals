@@ -50,6 +50,8 @@ public class AllFilmsFragment extends Fragment {
     private GridLayoutManager layoutManager;
 
 
+    public static MagiPlexFilm_DB magiPlexFilm_db;
+
 
     private static final int VERTICAL_ITEM_SPACE = 48;
 

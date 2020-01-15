@@ -23,7 +23,6 @@
         <activity
             android:name=".activities.MasterActivity"
             android:configChanges="orientation|screenSize"
-            android:label=""
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,7 +33,9 @@
         <activity
             android:name=".activities.FilmDetailsActivity"
             android:configChanges="orientation|screenSize"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
     </application>
 
 </manifest>

@@ -35,7 +35,7 @@ public class MyFavourites_Data implements Serializable {
         return FilmID;
     }
 
-    void setFilmID(int FilmID) {
+    public void setFilmID(int FilmID) {
         this.FilmID = FilmID;
     }
 
@@ -44,7 +44,7 @@ public class MyFavourites_Data implements Serializable {
         return FilmTitle;
     }
 
-    void setFilmTitle(String FilmTitle) {
+    public void setFilmTitle(String FilmTitle) {
         this.FilmTitle = FilmTitle;
     }
 
@@ -58,7 +58,7 @@ public class MyFavourites_Data implements Serializable {
     }
 
 
-    public String getFilmDescription() {
+    String getFilmDescription() {
         return FilmDescription;
     }
 
@@ -67,7 +67,7 @@ public class MyFavourites_Data implements Serializable {
     }
 
 
-    public String getFilmUserRating() {
+    String getFilmUserRating() {
         return FilmUserRating;
     }
 
@@ -85,11 +85,11 @@ public class MyFavourites_Data implements Serializable {
     }
 
 
-    public String getFilmThumbnailURL() {
+    String getFilmThumbnailURL() {
         return FilmThumbnailURL;
     }
 
-    void setFilmThumbnailURL(String FilmThumbnailURL) {
+    public void setFilmThumbnailURL(String FilmThumbnailURL) {
         this.FilmThumbnailURL = FilmThumbnailURL;
     }
 

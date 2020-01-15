@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:adjustViewBounds="true">
+    android:adjustViewBounds="true"
+    android:id="@+id/film_card_container">
 
     <androidx.cardview.widget.CardView
         android:layout_width="300dp"
@@ -15,7 +16,6 @@
         tools:context=".activities.LatestFilmsFragment">
 
         <LinearLayout
-            android:id="@+id/film_container"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -152,13 +152,13 @@ ADDED from C:\Users\Wendy\Documents\AppDev\magiplex_film_rentals\app\src\main\An
 	android:name
 		ADDED from C:\Users\Wendy\Documents\AppDev\magiplex_film_rentals\app\src\main\AndroidManifest.xml:30:27-74
 activity#com.thomasp.a30211522.magiplexfilmrentals.activities.FilmDetailsActivity
-ADDED from C:\Users\Wendy\Documents\AppDev\magiplex_film_rentals\app\src\main\AndroidManifest.xml:34:9-37:20
+ADDED from C:\Users\Wendy\Documents\AppDev\magiplex_film_rentals\app\src\main\AndroidManifest.xml:34:9-37:68
 	android:configChanges
-		ADDED from C:\Users\Wendy\Documents\AppDev\magiplex_film_rentals\app\src\main\AndroidManifest.xml:35:13-59
+		ADDED from C:\Users\Wendy\Documents\AppDev\magiplex_film_rentals\app\src\main\AndroidManifest.xml:36:13-59
 	android:theme
-		ADDED from C:\Users\Wendy\Documents\AppDev\magiplex_film_rentals\app\src\main\AndroidManifest.xml:36:13-56
+		ADDED from C:\Users\Wendy\Documents\AppDev\magiplex_film_rentals\app\src\main\AndroidManifest.xml:37:13-56
 	android:name
-		ADDED from C:\Users\Wendy\Documents\AppDev\magiplex_film_rentals\app\src\main\AndroidManifest.xml:34:19-65
+		ADDED from C:\Users\Wendy\Documents\AppDev\magiplex_film_rentals\app\src\main\AndroidManifest.xml:35:13-59
 uses-sdk
 INJECTED from C:\Users\Wendy\Documents\AppDev\magiplex_film_rentals\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Wendy\Documents\AppDev\magiplex_film_rentals\app\src\main\AndroidManifest.xml

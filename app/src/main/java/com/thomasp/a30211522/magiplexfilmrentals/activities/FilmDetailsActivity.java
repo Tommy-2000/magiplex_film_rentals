@@ -18,7 +18,7 @@ public class FilmDetailsActivity extends AppCompatActivity {
 
 
         //Hide the default action bar to properly display the nested scroll view
-        Objects.requireNonNull(getSupportActionBar()).hide();
+        getSupportActionBar().hide();
 
         //Receive main film data
         Intent intent = getIntent();

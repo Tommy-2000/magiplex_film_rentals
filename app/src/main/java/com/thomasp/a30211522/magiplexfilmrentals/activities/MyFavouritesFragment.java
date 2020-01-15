@@ -22,11 +22,13 @@ import com.thomasp.a30211522.magiplexfilmrentals.model.MyFavourites_Data;
 
 import java.util.List;
 
+
 public class MyFavouritesFragment extends Fragment {
+
 
     private List<MyFavourites_Data> MyFavouritesDataList;
     private FavouriteAdapter favouriteAdapter;
-    public static MagiPlexFilm_DB magiPlexFilmCreateDB;
+    public static MagiPlexFilm_DB magiPlexFilm_db;
     private RecyclerView recyclerView;
     private GridLayoutManager layoutManager;
 
@@ -85,12 +87,6 @@ public class MyFavouritesFragment extends Fragment {
         //Set the recyclerView for the rootView and apply spacing
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.favourite_film_feed);
 
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        //add ItemDecoration
-        recyclerView.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
-
-
         //Return the rootView and the getter for MyFavourites_Data
         getFavFilmData();
         return rootView;
@@ -102,7 +98,10 @@ public class MyFavouritesFragment extends Fragment {
         //Use this recyclerView adapter to render the data to these items and set the items into a grid
         FavouriteAdapter favouriteAdapter = new FavouriteAdapter(myFavourites_data, fContext);
         recyclerView.setLayoutManager(new LinearLayoutManager(fContext));
-
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+        //add ItemDecoration
+        recyclerView.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
 
         recyclerView.setAdapter(favouriteAdapter);
 

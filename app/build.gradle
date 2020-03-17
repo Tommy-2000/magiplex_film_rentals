@@ -56,6 +56,16 @@ dependencies {
     // Picasso Library
     implementation 'com.squareup.picasso:picasso:2.71828'
 
+    // fasterXML Library for JSON processing
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.9.8'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.9.8'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
+
+
+    // Butterknife for management of views in Android
+    implementation 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+
     // Facebook share Library
     implementation 'com.facebook.android:facebook-share:5.13.0'
 }
